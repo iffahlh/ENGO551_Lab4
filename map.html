@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calgary Building Permits</title> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier-Leaflet/0.2.6/oms.min.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        #map { height: 100%; width: 100%}
+    </style>
+
+</head>
+<body>
+
+    <div class="row">
+        <!--- Map container -->
+        <div class="col-10 min-vh-100">
+          <div id="map"></div>
+        </div>
+        <div class="col-2">
+            <!--- Side panel containing user options-->
+            <h5> Toggle Map Layer </h5>
+            <!--- Toggles layer for Calgary Building Permits. This is checked by default-->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="permitCheck" checked>
+                <label class="form-check-label" for="permitCheck">
+                Calgary Building Permits
+                </label>
+            </div>
+            <!-- date inputs. User can display the results for one date if they leave one of the date inputs blank
+                This form is hidden when Calgary traffic incidents is checked-->
+            <div id="userDates">
+                <form>
+                    From <br> <input type="date" id="date1" placeholder="From" class="dateInput"> 
+                    <br>
+                    To <br> <input type="date" id="date2" placeholder="To" class="dateInput">
+                </form>
+            </div>
+            <br>
+            <!--- Toggles layer for Calgary Traffic Incidents. -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="incidentCheck">
+                    Calgary Traffic Incidents 2017
+                </label>
+            </div>
+            <br>
+            <!--- Input for Mapbox Access Token to display Calgary Traffic Incidents 
+                This form is hidden when Calgary Building Permits is checked -->
+            <div id="userAccessToken" class="form-group" hidden>
+                <input type="text" class="form-control" id="mapboxToken" placeholder="Mapbox Access Token" value="">
+                <button type="submit" class="btn btn-primary">Enter</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="map.js"></script>
+    
+
+</body>
